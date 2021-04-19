@@ -1,9 +1,8 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Alexandra Gonçalves Alcantara
+- Janis Costadelli
 
 Link do Surge: www.link.com.br
 
