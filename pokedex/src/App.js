@@ -1,16 +1,9 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import PokedexPage from "./pages/PokedexPage";
-import DetailsPage from "./pages/DetailsPage";
+import Router from "./routes/Router";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
-  return (
-    <div className="App">
-      {/* <HomePage /> */}
-      <PokedexPage />
-      {/* <DetailsPage /> */}
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

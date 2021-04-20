@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { goToLastPage, goToPokedexPage } from "../routes/coordinator";
 
 const Button = styled.button`
   margin-left: 20px;
@@ -18,6 +20,7 @@ const Button = styled.button`
 
 const Title = styled.h1`
   color: #d29a95;
+  margin: 0 auto;
 `;
 
 const Header = (props) => {
@@ -28,8 +31,9 @@ const Header = (props) => {
         alignItems="center"
         justifyContent="center"
         backgroundColor="#f3d8e0"
+        height="70px"
       >
-        <Button onClick={() => null}>{props.name}</Button>
+        <Button onClick={props.page}>{props.name}</Button>
 
         <Title>{props.title}</Title>
       </Grid>
