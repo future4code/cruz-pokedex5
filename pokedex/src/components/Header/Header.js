@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
   margin-left: 82px;
-  width: ${(props) => props.width || "120px"};
+  width: 120px;
   padding: 10px;
   border: none;
   border-radius: 6px;
@@ -24,6 +24,7 @@ const Title = styled.h1`
 `;
 
 const Header = (props) => {
+  const { page, name, title } = props;
   return (
     <div>
       <Grid
@@ -33,9 +34,9 @@ const Header = (props) => {
         backgroundColor="#f3d8e0"
         height="70px"
       >
-        <Button onClick={props.page}>{props.name}</Button>
+        <Button onClick={page}>{name}</Button>
 
-        <Title>{props.title}</Title>
+        <Title>{title}</Title>
       </Grid>
     </div>
   );
