@@ -1,8 +1,12 @@
-import React from "react";
-import Header from "../components/Header";
+import React, { useContext, useEffect, useState } from "react";
+import Header from "../components/Header/Header";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { goToLastPage } from "../routes/coordinator";
+import { useParams } from "react-router-dom";
+import GlobalStateContext from "../global/GlobalStateContext";
+import { baseUrl } from "../constants/baseUrl";
+import axios from "axios";
 
 const Button = styled.button`
   width: 150px;
@@ -21,6 +25,33 @@ const Button = styled.button`
 
 const DetailsPage = () => {
   const history = useHistory();
+  const { name, details } = useParams();
+  const { pokemons, pokedex } = useContext(GlobalStateContext);
+  const [chosenPokemon, setChosenPokemon] = useState({});
+
+  useEffect(() => {
+    let current = [];
+    if (details) {
+      current = pokedex.find((item) => {
+        return item.name === name;
+      });
+    } else {
+      current = pokemons.find((item) => {
+        return item.name === name;
+      });
+    }
+    if (!current) {
+      axios
+        .get(`${baseUrl}/${name}`)
+        .then((res) => setChosenPokemon(res.data))
+        .catch((err) => {
+          alert("Ops! Algo deu errado.");
+          console.log(err);
+        });
+    } else {
+      setChosenPokemon(current);
+    }
+  }, []);
 
   return (
     <>
@@ -29,7 +60,32 @@ const DetailsPage = () => {
         name="Voltar"
         page={() => goToLastPage(history)}
       />
-      <Button>Adicionar/Remover da pokedex</Button>
+
+      {chosenPokemon && chosenPokemon.sprites && (
+        <div>
+          <img src={chosenPokemon.sprites.front_default} />
+          <img src={chosenPokemon.sprites.back_default} />
+          <p>Status</p>
+          {chosenPokemon &&
+            chosenPokemon.stats.map((stat) => {
+              return (
+                <p key={stat.stat.name}>
+                  {stat.stat.name}: {stat.base_stat}
+                </p>
+              );
+            })}
+          <p>Moves</p>
+          {chosenPokemon &&
+            chosenPokemon.types.map((type) => {
+              return <p key={type.type.name}>{type.type.name}</p>;
+            })}
+          <p>Principais ataques</p>
+          {chosenPokemon &&
+            chosenPokemon.moves.map((move, index) => {
+              return index < 5 && <p key={move.move.name}>{move.move.name}</p>;
+            })}
+        </div>
+      )}
     </>
   );
 };
