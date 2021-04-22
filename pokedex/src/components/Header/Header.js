@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { goToLastPage, goToPokedexPage } from "../routes/coordinator";
+import { goToLastPage, goToPokedexPage } from "../../routes/coordinator";
 
 const Button = styled.button`
   margin-left: 20px;

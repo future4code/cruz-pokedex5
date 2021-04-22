@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { goToLastPage, goToPokedexPage } from "../routes/coordinator";
-import Header from "../components/Header";
+import { goToPokedexPage } from "../routes/coordinator";
+import Header from "../components/Header/Header";
+import GlobalStateContext from "../global/GlobalStateContext";
+import PokeCard from "../components/PokeCard/PokeCard";
 
 const HomePage = (props) => {
   const history = useHistory();
+  const { pokemons } = useContext(GlobalStateContext);
 
   return (
     <>
@@ -13,6 +16,12 @@ const HomePage = (props) => {
         name="Ver minha POKEDEX"
         page={() => goToPokedexPage(history)}
       />
+      <div>
+        {pokemons &&
+          pokemons.map((poke) => {
+            return <PokeCard key={poke.name} poke={poke} />;
+          })}
+      </div>
     </>
   );
 };

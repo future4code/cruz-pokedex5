@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { goToLastPage, goToDetailsPage } from "../routes/coordinator";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import styled from "styled-components";
+import GlobalStateContext from "../global/GlobalStateContext";
+import PokeCard from "../components/PokeCard/PokeCard";
 
 const Button = styled.button`
   width: 150px;
@@ -21,6 +23,7 @@ const Button = styled.button`
 
 const PokedexPage = () => {
   const history = useHistory();
+  const { pokedex } = useContext(GlobalStateContext);
 
   return (
     <>
@@ -29,7 +32,12 @@ const PokedexPage = () => {
         name="Voltar para lista de pokemons"
         page={() => goToLastPage(history)}
       />
-      <Button onClick={() => goToDetailsPage(history)}>Detalhes</Button>
+      <div>
+        {pokedex &&
+          pokedex.map((item) => {
+            return <PokeCard inPokedex key={item.name} poke={item} />;
+          })}
+      </div>
     </>
   );
 };
