@@ -2,68 +2,125 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToDetailsPage } from "../../routes/coordinator";
+import { Box } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye,
+  faMinusCircle,
+  faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { Flex } from "@chakra-ui/react";
+
+const PokeName = styled.p`
+  color: #ffffff;
+  text-shadow: 2px 2px 2.5px gray;
+  font-family: joystix;
+  margin: 0 auto;
+  margin-top: 13px;
+  margin-bottom: 8px;
+  text-align: center;
+`;
+
+const AddAndRemoveButton = styled.button`
+  width: 60px;
+  background-color: transparent;
+  border: none;
+  color: #008000;
+  cursor: pointer;
+  :hover {
+    color: #ffffff;
+    transform: scale(1.2);
+    transition: all 0.3s ease 0s;
+  }
+`;
+
+const DetailsButton = styled.button`
+  width: 60px;
+  background-color: transparent;
+  border: none;
+  color: #4869a2;
+  cursor: pointer;
+  :hover {
+    color: #ffffff;
+    transform: scale(1.2);
+    transition: all 0.3s ease 0s;
+  }
+`;
 
 const PokeCard = (props) => {
   const history = useHistory();
-  const { pokemons, setPokemons, pokedex, setPokedex } = useContext(
-    GlobalStateContext
-  );
+  const { states, setters } = useContext(GlobalStateContext);
+  const { poke, name, inPokedex } = props;
 
   const addPokedex = () => {
-    const onePoke = pokemons.findIndex((item) => item.name === props.poke.name);
-    const newPokeList = [...pokemons];
+    const onePoke = states.pokemons.findIndex(
+      (item) => item.name === poke.name
+    );
+    const newPokeList = [...states.pokemons];
     newPokeList.splice(onePoke, 1);
     const orderedPokemons = newPokeList.sort((a, b) => {
       return a.id - b.id;
     });
 
-    const newPokedexList = [...pokedex, props.poke];
+    const newPokedexList = [...states.pokedex, poke];
     const orderedPokedex = newPokedexList.sort((a, b) => {
       return a.id - b.id;
     });
 
-    setPokedex(orderedPokedex);
-    setPokemons(orderedPokemons);
+    setters.setPokedex(orderedPokedex);
+    setters.setPokemons(orderedPokemons);
   };
 
   const removePokedex = () => {
-    const pokeIndex = pokedex.findIndex(
-      (item) => item.name === props.poke.name
+    const pokeIndex = states.pokedex.findIndex(
+      (item) => item.name === poke.name
     );
-    const updatedPokedexList = [...pokedex];
+    const updatedPokedexList = [...states.pokedex];
     updatedPokedexList.splice(pokeIndex, 1);
 
     const orderedPokedex = updatedPokedexList.sort((a, b) => {
       return a.id - b.id;
     });
 
-    const newPokemonList = [...pokemons, props.poke];
+    const newPokemonList = [...states.pokemons, poke];
     const orderedPokemons = newPokemonList.sort((a, b) => {
       return a.id - b.id;
     });
 
-    setPokedex(orderedPokedex);
-    setPokemons(orderedPokemons);
+    setters.setPokedex(orderedPokedex);
+    setters.setPokemons(orderedPokemons);
   };
 
   return (
     <div>
-      <img
-        src={props.poke && props.poke.sprites.front_default}
-        alt={props.poke.name}
-      />
-      <div>
-        <button onClick={props.inPokedex ? removePokedex : addPokedex}>
-          {props.inPokedex ? "Remove from Pokédex" : "Add to Pokédex"}
-        </button>
-        <button
-          onClick={() =>
-            goToDetailsPage(history, props.poke.name, props.inPokedex)
-          }
-        >
-          Detalhes
-        </button>
-      </div>
+      <Box maxW="sm" borderRadius="15px" border="1px solid white" w="180px">
+        <PokeName>{name}</PokeName>
+        <Image
+          boxSize="115px"
+          h="100px"
+          display="block"
+          margin="0 auto"
+          filter="drop-shadow(0px 4px 9px gray)"
+          src={poke && poke.sprites.front_default}
+          alt={poke.name}
+        />
+        <Flex justifyContent="space-between" mb="6px">
+          <AddAndRemoveButton onClick={inPokedex ? removePokedex : addPokedex}>
+            {inPokedex ? (
+              <FontAwesomeIcon color="#c40233" size="2x" icon={faMinusCircle} />
+            ) : (
+              <FontAwesomeIcon size="2x" icon={faPlusCircle} />
+            )}
+          </AddAndRemoveButton>
+          <DetailsButton
+            onClick={() => goToDetailsPage(history, poke.name, inPokedex)}
+          >
+            <FontAwesomeIcon size="2x" icon={faEye} />
+          </DetailsButton>
+        </Flex>
+      </Box>
     </div>
   );
 };

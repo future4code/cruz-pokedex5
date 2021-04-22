@@ -26,17 +26,17 @@ const Button = styled.button`
 const DetailsPage = () => {
   const history = useHistory();
   const { name, details } = useParams();
-  const { pokemons, pokedex } = useContext(GlobalStateContext);
+  const { states } = useContext(GlobalStateContext);
   const [chosenPokemon, setChosenPokemon] = useState({});
 
   useEffect(() => {
     let current = [];
     if (details) {
-      current = pokedex.find((item) => {
+      current = states.pokedex.find((item) => {
         return item.name === name;
       });
     } else {
-      current = pokemons.find((item) => {
+      current = states.pokemons.find((item) => {
         return item.name === name;
       });
     }

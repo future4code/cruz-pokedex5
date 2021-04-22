@@ -1,18 +1,18 @@
 import React from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import { goToLastPage, goToPokedexPage } from "../../routes/coordinator";
 
 const Button = styled.button`
-  margin-left: 20px;
-  width: 150px;
+  margin-left: 82px;
+  width: ${(props) => props.width || "120px"};
   padding: 10px;
   border: none;
   border-radius: 6px;
   background-color: #596d82;
   color: #ffffff;
   cursor: pointer;
+  font-family: joystix;
+
   :hover {
     background-color: #85a1ca;
   }
@@ -27,7 +27,7 @@ const Header = (props) => {
   return (
     <div>
       <Grid
-        templateColumns="100px 1fr"
+        templateColumns="10px 1fr"
         alignItems="center"
         justifyContent="center"
         backgroundColor="#f3d8e0"

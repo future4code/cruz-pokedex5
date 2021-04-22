@@ -23,7 +23,7 @@ const Button = styled.button`
 
 const PokedexPage = () => {
   const history = useHistory();
-  const { pokedex } = useContext(GlobalStateContext);
+  const { states } = useContext(GlobalStateContext);
 
   return (
     <>
@@ -33,8 +33,8 @@ const PokedexPage = () => {
         page={() => goToLastPage(history)}
       />
       <div>
-        {pokedex &&
-          pokedex.map((item) => {
+        {states.pokedex &&
+          states.pokedex.map((item) => {
             return <PokeCard inPokedex key={item.name} poke={item} />;
           })}
       </div>
