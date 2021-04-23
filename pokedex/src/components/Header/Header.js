@@ -1,43 +1,23 @@
 import React from "react";
-import { Grid } from "@chakra-ui/react";
-import styled from "styled-components";
-
-const Button = styled.button`
-  margin-left: 82px;
-  width: 120px;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  background-color: #596d82;
-  color: #ffffff;
-  cursor: pointer;
-  font-family: joystix;
-
-  :hover {
-    background-color: #85a1ca;
-  }
-`;
-
-const Title = styled.h1`
-  color: #d29a95;
-  margin: 0 auto;
-`;
+import { Flex } from "@chakra-ui/react";
+import { Button, Title, Pokebola } from "./header-style";
+import pokebola from "../../images/pokebola.png";
 
 const Header = (props) => {
   const { page, name, title } = props;
   return (
     <div>
-      <Grid
-        templateColumns="10px 1fr"
+      <Flex
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         backgroundColor="#f3d8e0"
         height="70px"
       >
         <Button onClick={page}>{name}</Button>
 
         <Title>{title}</Title>
-      </Grid>
+        <Pokebola src={pokebola} alt="Imagem de pokebola" />
+      </Flex>
     </div>
   );
 };

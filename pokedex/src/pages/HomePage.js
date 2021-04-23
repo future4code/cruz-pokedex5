@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
+import GlobalStateContext from "../global/GlobalStateContext";
+import Header from "../components/Header/Header";
+import PokeCard from "../components/PokeCard/PokeCard";
 import { useHistory } from "react-router-dom";
 import { goToPokedexPage } from "../routes/coordinator";
-import Header from "../components/Header/Header";
-import GlobalStateContext from "../global/GlobalStateContext";
-import PokeCard from "../components/PokeCard/PokeCard";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 const HomePage = (props) => {
   const history = useHistory();
@@ -13,32 +13,26 @@ const HomePage = (props) => {
   const pokemonsComponents =
     states.pokemons &&
     states.pokemons.map((item) => {
-      return (
-        <Grid>
-          <GridItem margin="0 auto">
-            <PokeCard key={item.name} poke={item} name={item.name} />
-          </GridItem>
-        </Grid>
-      );
+      return <PokeCard key={item.name} poke={item} name={item.name} />;
     });
 
   return (
     <>
       <Header
         title="POKÉMONS"
-        name="Pokedex"
+        name="pokédex"
         page={() => goToPokedexPage(history)}
       />
-      <Grid
-        templateColumns="repeat(6, 1fr)"
-        gap="10px"
+      <Flex
         w="88vw"
         margin="0 auto"
         mt="20px"
         mb="20px"
+        flexWrap="wrap"
+        justifyContent="space-between"
       >
         {pokemonsComponents}
-      </Grid>
+      </Flex>
     </>
   );
 };

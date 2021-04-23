@@ -1,53 +1,17 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { useHistory } from "react-router-dom";
 import { goToDetailsPage } from "../../routes/coordinator";
 import { Box } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
-import styled from "styled-components";
+import { Flex } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faMinusCircle,
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Flex } from "@chakra-ui/react";
-
-const PokeName = styled.p`
-  color: #ffffff;
-  text-shadow: 2px 2px 2.5px gray;
-  font-family: joystix;
-  margin: 0 auto;
-  margin-top: 13px;
-  margin-bottom: 8px;
-  text-align: center;
-`;
-
-const AddAndRemoveButton = styled.button`
-  width: 60px;
-  background-color: transparent;
-  border: none;
-  color: #008000;
-  cursor: pointer;
-  :hover {
-    color: #ffffff;
-    transform: scale(1.2);
-    transition: all 0.3s ease 0s;
-  }
-`;
-
-const DetailsButton = styled.button`
-  width: 60px;
-  background-color: transparent;
-  border: none;
-  color: #4869a2;
-  cursor: pointer;
-  :hover {
-    color: #ffffff;
-    transform: scale(1.2);
-    transition: all 0.3s ease 0s;
-  }
-`;
+import { PokeName, AddAndRemoveButton, DetailsButton } from "./pokecard-style";
 
 const PokeCard = (props) => {
   const history = useHistory();
@@ -95,10 +59,16 @@ const PokeCard = (props) => {
 
   return (
     <div>
-      <Box maxW="sm" borderRadius="15px" border="1px solid white" w="180px">
+      <Box
+        borderRadius="15px"
+        border="1px solid white"
+        mb="12px"
+        minW="11vw"
+        m="5px"
+        p={4}
+      >
         <PokeName>{name}</PokeName>
         <Image
-          boxSize="115px"
           h="100px"
           display="block"
           margin="0 auto"
