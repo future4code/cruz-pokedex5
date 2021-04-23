@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import PokedexPage from "../pages/PokedexPage";
-import DetailsPage from "../pages/DetailsPage";
+import DetailsPage from "../pages/detailspage/DetailsPage";
 import ErrorPage from "../pages/ErrorPage";
 
 const Router = () => {

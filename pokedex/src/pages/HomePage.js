@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
+import GlobalStateContext from "../global/GlobalStateContext";
+import Header from "../components/Header/Header";
+import PokeCard from "../components/PokeCard/PokeCard";
 import { useHistory } from "react-router-dom";
 import { goToPokedexPage } from "../routes/coordinator";
-import Header from "../components/Header/Header";
-import GlobalStateContext from "../global/GlobalStateContext";
-import PokeCard from "../components/PokeCard/PokeCard";
 import { Flex } from "@chakra-ui/react";
 
 const HomePage = (props) => {
@@ -20,7 +20,7 @@ const HomePage = (props) => {
     <>
       <Header
         title="POKÉMONS"
-        name="Pokedex"
+        name="pokédex"
         page={() => goToPokedexPage(history)}
       />
       <Flex
