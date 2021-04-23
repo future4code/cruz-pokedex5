@@ -12,6 +12,15 @@ import {
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { Flex } from "@chakra-ui/react";
+import { createBreakpoints } from "@chakra-ui/theme-tools";
+
+const breakpoints = createBreakpoints({
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em",
+});
 
 const PokeName = styled.p`
   color: #ffffff;
@@ -21,6 +30,7 @@ const PokeName = styled.p`
   margin-top: 13px;
   margin-bottom: 8px;
   text-align: center;
+  font-size: small;
 `;
 
 const AddAndRemoveButton = styled.button`
@@ -95,10 +105,16 @@ const PokeCard = (props) => {
 
   return (
     <div>
-      <Box maxW="sm" borderRadius="15px" border="1px solid white" w="180px">
+      <Box
+        borderRadius="15px"
+        border="1px solid white"
+        mb="12px"
+        minW="11vw"
+        m="5px"
+        p={4}
+      >
         <PokeName>{name}</PokeName>
         <Image
-          boxSize="115px"
           h="100px"
           display="block"
           margin="0 auto"
