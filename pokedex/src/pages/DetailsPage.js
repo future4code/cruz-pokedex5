@@ -126,60 +126,67 @@ const DetailsPage = () => {
   return (
     <>
       <Header title={name} name="Voltar" page={() => goToLastPage(history)} />
-      <Flex
+      {/* <Flex
         flexDirection="column"
         w="80vw"
         h="80vh"
         margin="0 auto"
         justifyContent="center"
         alignItems="center"
-      >
-        {chosenPokemon && chosenPokemon.sprites && (
-          <div>
-            <Flex alignContent="center" justifyContent="center">
-              <Flex
-                flexDirection="column"
-                alignContent="center"
-                justifyContent="center"
-              >
-                <Flex w="150px">
-                  <Image
-                    w="150px"
-                    display="block"
-                    margin="0 auto"
-                    filter="drop-shadow(0px 4px 9px gray)"
-                    src={chosenPokemon.sprites.front_default}
-                  />
-                </Flex>
-                <Flex w="150px">
-                  <Image
-                    w="150px"
-                    display="block"
-                    margin="0 auto"
-                    filter="drop-shadow(0px 4px 9px gray)"
-                    src={chosenPokemon.sprites.back_default}
-                  />
-                </Flex>
+      > */}
+      {chosenPokemon && chosenPokemon.sprites && (
+        <div>
+          <Flex
+            w="80vw"
+            margin="0 auto"
+            mt="20px"
+            mb="20px"
+            flexWrap="wrap"
+            justifyContent="space-between"
+          >
+            <Flex
+              flexDirection="column"
+              alignContent="center"
+              justifyContent="center"
+            >
+              <Flex w="150px">
+                <Image
+                  w="150px"
+                  display="block"
+                  margin="0 auto"
+                  filter="drop-shadow(0px 4px 9px gray)"
+                  src={chosenPokemon.sprites.front_default}
+                />
               </Flex>
-
-              <Flex flexDirection="column" w="350px">
-                <Titulos>_Status_</Titulos>
-                {statusComponents}
-              </Flex>
-
-              <Flex flexDirection="column" w="300px">
-                <Titulos>_Ataques_</Titulos>
-                {atackComponents}
-              </Flex>
-
-              <Flex flexDirection="column" w="200px">
-                <Titulos>_Tipo_</Titulos>
-                {typeComponents}
+              <Flex w="150px">
+                <Image
+                  w="150px"
+                  display="block"
+                  margin="0 auto"
+                  filter="drop-shadow(0px 4px 9px gray)"
+                  src={chosenPokemon.sprites.back_default}
+                />
               </Flex>
             </Flex>
-          </div>
-        )}
-      </Flex>
+
+            <Flex flexDirection="column" w="350px">
+              <Titulos>_Status_</Titulos>
+              {statusComponents}
+            </Flex>
+
+            <Flex flexDirection="column" w="300px">
+              <Titulos>_Ataques_</Titulos>
+              {atackComponents}
+            </Flex>
+
+            <Flex flexDirection="column" w="200px">
+              <Titulos>_Tipo_</Titulos>
+              {typeComponents}
+            </Flex>
+          </Flex>
+        </div>
+      )}
+      {/* </Flex> */}
     </>
   );
 };
