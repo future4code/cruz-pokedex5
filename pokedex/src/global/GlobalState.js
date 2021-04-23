@@ -44,10 +44,12 @@ const GlobalState = (props) => {
     });
   }, [pokeNames]);
 
-  const data = { pokemons, setPokemons, pokedex, setPokedex };
+  const states = { pokemons, pokedex };
+  const setters = { setPokemons, setPokedex };
+  const requests = { getPokeNames };
 
   return (
-    <GlobaStateContext.Provider value={data}>
+    <GlobaStateContext.Provider value={{ states, setters, requests }}>
       {props.children}
     </GlobaStateContext.Provider>
   );
