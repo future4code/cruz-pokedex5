@@ -22,7 +22,7 @@ const Button = styled.button`
   margin: 0 auto;
 `;
 
-const PokedexPage = (props) => {
+const PokedexPage = () => {
   const history = useHistory();
   const { states } = useContext(GlobalStateContext);
 
@@ -41,14 +41,14 @@ const PokedexPage = (props) => {
   return (
     <>
       <Header
-        title="POKEDEX"
+        title="Pokedex"
         name="Voltar"
         page={() => goToLastPage(history)}
       />
       <Grid
         templateColumns="repeat(6, 1fr)"
         gap="10px"
-        w="88vw"
+        w="89vw"
         margin="0 auto"
         mt="20px"
         mb="20px"

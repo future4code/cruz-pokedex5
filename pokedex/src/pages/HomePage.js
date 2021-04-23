@@ -12,11 +12,11 @@ const HomePage = (props) => {
 
   const pokemonsComponents =
     states.pokemons &&
-    states.pokemons.map((poke) => {
+    states.pokemons.map((item) => {
       return (
         <Grid>
           <GridItem margin="0 auto">
-            <PokeCard key={poke.name} poke={poke} name={poke.name} />
+            <PokeCard key={item.name} poke={item} name={item.name} />
           </GridItem>
         </Grid>
       );
