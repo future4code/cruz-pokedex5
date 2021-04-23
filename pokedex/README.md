@@ -47,12 +47,9 @@ https://exotic-person-pokemon.surge.sh/
     <td align="center"><a href="https://github.com/alexa2me">
     <img src="https://avatars.githubusercontent.com/u/63327969?s=460&v=4" width="100px" alt="Imagem do perfil da Alexandra"/>
     <br />
-    <sub><b>Alexandra Alcantara</b></sub><br />:snowflake::snowman::snowflake:</td>
-</table>
-<table>
-     <tr>
+    <sub><b>Alexandra Alcantara</b></sub><br />:snowflake::snowman::snowflake:</td>     
     <td align="center"><a href="https://github.com/janiscostadelli">
     <img src="https://avatars.githubusercontent.com/u/77967942?v=4" width="100px" alt="Imagem do perfil da Janis"/>
     <br />
-    <sub><b>Janis Costadelli</b></sub></td>
+    <sub><b>Janis Costadelli</b></sub><br /></td>
 </table>
