@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex } from "@chakra-ui/react";
 
 const Button = styled.button`
-  margin-left: 6%;
+  margin-left: 6.5%;
   padding: 10px;
   border: none;
   border-radius: 6px;
