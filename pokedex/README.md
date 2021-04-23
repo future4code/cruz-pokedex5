@@ -40,7 +40,7 @@ https://exotic-person-pokemon.surge.sh/
 
 - Library de componentes do React utilizada para facilitar o desenvolvimento da UI.
 
-## 🚀 Autora
+## 🚀 Autoras
 
 <table>
   <tr>
