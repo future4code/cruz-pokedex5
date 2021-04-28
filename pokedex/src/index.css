@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: joystix;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #d29a95;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: joystix;
+  src: url(./assets/fonts/joystix.ttf);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
